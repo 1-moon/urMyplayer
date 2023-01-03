@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}My Team - {{ user.username }}{% endblock %}
+
+
+
+{% block header %}
+<div class="container">
+    <div class="row">
+        <div>
+            <img class="img-rounded" src="{{ user.emblem }}">
+        </div>
+            <div class="col">
+            <h3>{{ user.username }}</h3>
+            <p>
+            {% if user.location %}
+                <a href="http://maps.google.com/?q={{ user.location }}">{{ user.location }}</a> 
+            {% endif %}
+            </p>
+
+            {% if current_user.is_administrator() %}
+                <p><a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
+            {% endif %}
+            
+            {% if user.member_since %}
+                <p>{{ user.member_since }} signup. &nbsp;&nbsp;
+            {% endif %}
+
+            <p>
+                {{ moment(user.last_seen).fromNow() }} visit.
+            </p>
+
+            <p>
+                {% if user == current_user %}
+                    <a class="btn btn-secondary m-1" href="{{ url_for('.edit_profile') }}">edit</a>
+                {% endif %}    
+                {% if current_user.is_administrator() %}
+                <a class="btn btn-danger m-1" href="{{ url_for('.edit_profile_admin', id=user.id) }}">profile modify[Admin]</a>
+                {% endif %}    
+            </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block content %}
+<br>
+
+<h1 class="display-4 text-center">My Player</h1>
+<br>
+<div class="row row-cols-1 row-cols-md-3">
+    <!-- card section  -->
+    <div class="col-sm-6">
+        <div class="card-group">
+            {% for player in myPlayer %}
+            <div class="shadow p-3 mb-5 bg-white rounded" style="max-width: 30rem">
+                <div class="card-header">
+                    <img src="{{player.profile_pic}}" style="width: 100%" >
+                </div>
+                <div class="card-body text-secondary">
+                    <p class="card-title"><strong>Name:         </strong> {{player.name}}</p>
+                    <p class="card-title"><strong>Nationality:  </strong> {{player.nationality}}</p>
+                    <p class="card-title"><strong>Club:         </strong> {{current_user.username}}</p>
+                    <p class="card-title"><strong>Birth:        </strong> {{player.birth}}</p>
+                    <p class="card-title"><strong>Height:       </strong> {{player.height}}</p>
+                    <p class="card-title"><strong>Positionr:    </strong> {{player.position.value}}</p>
+                    <p class="card-title"><strong>Foot:         </strong> {{player.foot}}</p>
+                </div>
+                <div class="card-group">
+                    <form action="{{url_for('main.mark', id=player.id)}}" method = "post">
+                        <input type="submit" class="btn btn-primary btn-sm" value="release">
+                    </form>
+                    <form action="{{ url_for('main.remove', id=player.id) }}" method = "post">
+                        <input type="submit" class="btn btn-secondary btn-sm" value="Retire">
+                    </form>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<br>
+
+{% endblock %}

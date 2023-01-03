@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block title %}Tranfer Market{% endblock %}
+
+{% block header %}
+<!--Only show these button if user not logged in-->
+{% if not current_user.is_authenticated %}
+<div class="container2">
+    <div class="row text-center">
+        <div class="row justify-content-center mt-5 pb-4">
+        <div class="col-md-10">
+            <div class="jumbotron jumbotron-fluid">
+              <h3 class="display-4">Welcome to Transfer Market</h3>
+              <p class="lead">Have you not log-in yet?</p>
+              <p class="lead">Before diving into transfer market please login</p>  
+            <div class="container">
+                
+
+                <div class="box">
+                    <p class="lead">Have you not signed up for team yet?</p>
+                    <a href="{{url_for('signup')}}" class="btn btn-secondary btn-sm">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                        d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                    </svg>
+                    Signup Here</a>
+                </div>
+
+                <div class="box">
+                <p class="lead">Please login for Registration</p>
+                <a href="{{url_for('login')}}" class="btn btn-secondary btn-sm"> <svg width="1em" height="1em"
+                    viewBox="0 0 16 16" class="bi bi-power" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M5.578 4.437a5 5 0 1 0 4.922.044l.5-.866a6 6 0 1 1-5.908-.053l.486.875z" />
+                    <path fill-rule="evenodd" d="M7.5 8V1h1v7h-1z" />
+                </svg>
+                Log-in Here!</a>
+                </div>
+               
+
+            </div>
+            </div>
+        </div>
+        </div> 
+    </div> 
+</div>
+{% endif %}
+{% endblock header %}
+
+
+{% block content %}
+
+<div class="jumbotron text-center">
+  <h1 >Transfer Market</h1> 
+  <h3>Do you want to search for specific player?</h3>
+  <div class="d-flex justify-content-center"">
+    <div class="container3">
+      <h5 class="display-4">Transfer Centre Live</h5>
+      <li>Messi & PSG 'feeling positive' ahead of contract talks in new year</li>
+      <li>Arsenal, Tottenham and Atletico Madrid chasing Mac Allister</li>
+      <li>appoint ex-Leipzig recruitment chief Vivell as technical director | Vivell's key signings and sales</li>
+      <li>Man Utd trigger Rashford, Shaw, Dalot, Fred deals</li>
+      <li>Wolves agree deal for Cunha | Loan then £34m fee</li>
+      <li>Transfer rumours: Arsenal | Chelsea | Liverpool | Man City | Man Utd | Newcastle | Tottenham</li>  
+    </div>
+  </div>
+</div>
+<br>
+    
+<h4 class="text-center">Release list</h4> 
+    <div class="row row-cols-1 row-cols-md-2" style="max-width: 40rem">
+        {% for player in transfer_list %}
+        <div class="card">
+            <div class="shadow p-3 mb-5 bg-white rounded" style="max-width: 20rem ">
+                    <img src="{{player.profile_pic}}"  style="width:100%" >
+                <div class="card-body text-secondary">
+                    <p class="card-title"><strong>Name:       </strong> {{player.name}}</p>
+                    <p class="card-title"><strong>Nationality:</strong> {{player.nationality}}</p>
+                    <p class="card-title"><strong>Height:     </strong> {{player.height}}</p>
+                    <p class="card-title"><strong>Position:   </strong> {{player.position.value}}</p>
+                    <p class="card-title"><strong>Foot:       </strong> {{player.foot}}</p>
+                    <p class="card-title"><strong>Club:       </strong> {{player.club}}</p>
+                </div>
+                <!-- bid creating area -->
+                <form action="" method="post">
+                    <h3 class="center">Make a bid</h3>
+                    <div class="form-floating">
+                        <input name="bid-club" type="text" class="form-control" id="bid-club">
+                        <label for="bid-club">Club name</label>
+                    </div>
+                    
+                    <div class="form-floating">
+                        <input name="bid-sum" class="form-control"id="bid-sum"></input>
+                        <label for="bid-sum">Sum</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Place</button>
+                </form>
+                <br>
+                <!-- bid check area -->
+                <div class="list-group">
+                    {% for bid in current_user.bids %}
+                    <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h3 class="mb-2">{{bid.club}}</h3>
+                        <small class="text-muted">{{bid.datetime}}</small>
+                    </div>
+                    <p class="mb-1">bid amount:  {{bid.bid_amount}}</p>
+                    <p class="mb-1">bid user:{{current_user.username}}</p>
+                    <!-- delete buttion  -->
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-primary" type="button" onclick="showUpdateBideModal({{ bid.id }})">edit</button>
+                        <button class="btn btn-primary" type="button" onclick="deleteBid({{ bid.id }})">delete</button>
+                    </div>
+                    </a> 
+                    {% endfor %}
+                    
+                </div> 
+                
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+<br>
+
+
+        
+{% include "_bidEdit.html" %}
+           
+<br>
+
+{% endblock content %}

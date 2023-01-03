@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}My Tema-profile{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h3>Profile</h3>
+</div>
+<div class="col-md-4">
+    <form method="post" class="post-form">
+        {{ form.csrf_token }}
+
+        <div class="form-group">
+            {{ form.email.label }} 
+            {{ form.email(class='form-control') }}
+        </div>  
+
+        <div class="form-group">
+            {{ form.teamname.label }} 
+            {{ form.teamname(class='form-control') }}
+        </div>  
+
+        <div class="form-group">
+            {{ form.role.label }} 
+            {{ form.role(class='form-control') }}
+        </div>  
+
+        <div class="form-group">
+          {{ form.league.label }} 
+          {{ form.league(class='form-control') }}
+        </div>           
+
+        <div class="form-group">
+            {{ form.stadium.label }}
+            {{ form.stadium(class='form-control') }}
+        </div>
+
+        <div class="form-group">
+            {{ form.capacity.label }}
+            {{ form.capacity(class='form-control') }}
+        </div>
+
+        <div class="form-group">
+          {{ form.address.label }}
+          {{ form.address(class='form-control') }}
+        </div>
+
+        <div class="form-group">
+          {{ form.manager.label }}
+          {{ form.manager(class='form-control') }}
+        </div>
+
+        <div class="form-group">
+          {{ form.founded.label }}
+          {{ form.founded(class='form-control') }}
+        </div>
+
+        <div class="form-group">
+          {{ form.telephone.label }}
+          {{ form.telephone(class='form-control') }}
+        </div>
+
+        <div class="form-group">
+          {{ form.emblem.label }}
+          {{ form.emblem(class='form-control') }}
+        </div>
+
+        <div class="form-group">
+            {{ form.submit(class='btn btn-primary') }}
+        </div>
+
+    </form>
+</div>
+{% endblock %}

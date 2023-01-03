@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block title %}News{% endblock %}
+{% block content %}
+<header>
+  <h1 class="display-4 text-center">News stand</h1>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+    
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <img src="./static/images/news1.PNG" alt="New York" width="1200" height="700">
+            <div class="carousel-caption">
+              <h4>Aston Villa granted permission by Birmingham City Council to expand Villa Park</h4>
+              <p> Birmingham City Council’s have granted planning permission for phase one of the redevelopment and expansion of Villa Park  </p>
+            </div>      
+          </div>
+
+          <div class="item">
+            <img src="./static/images/news2.PNG" alt="Chicago" width="1200" height="700" >
+            <div class="carousel-caption">
+              <h4>Motivation, fatigue, emptiness? What comes next for returning World Cup players?</h4>
+              <p>By Stuart James
+                Dec 23, 2022</p>
+            </div>      
+          </div>
+        
+          <div class="item">
+            <img src="./static/images/news3.PNG" alt="Los Angeles" width="1200" height="700">
+            <div class="carousel-caption">
+              <h4>Rangers narrowed the gap to Celtic to six points with a one-goal Scottish Premiership win over Ross County - a third in a row under Michael Beale </h4>
+              <p>John Lundstram (left) broke the deadlock 10 minutes from half time </p>
+            </div>      
+          </div>
+        </div>
+    
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+    </div>
+</header>
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+      <h4>article 1</h4>
+      <h6>Aston Villa have been granted planning permission by Birmingham City Council for the redevelopment and expansion of Villa Park</h6>
+      <p>Aston Villa have been granted planning permission by Birmingham City Council for the redevelopment and expansion of Villa Park.
+
+        The project will see the stadium's capacity rise to 50,000 from its current limit of 42,000 with a brand new North Stand.
+        
+        It would allow the ground to host major international tournaments, with Villa Park on the shortlist for the UK and Ireland's bid to host the 2028 European Championship.</p>
+      <button class="btn btn-default btn-lg">In-detail</button>
+    </div>
+    <div class="col-sm-4">
+      <img src="./static/images/news1.PNG"></img>
+    </div>
+  </div>
+</div>
+<br>
+<div class="container-fluid bg-grey">
+  <div class="row">
+    <div class="col-sm-4">
+      <img src="./static/images/news2.PNG"></img>
+    </div>
+    <div class="col-sm-8">
+      <h4>article 2</h4>
+      <h3><strong>Motivation, fatigue, emptiness? What comes next for returning World Cup players?</strong> </h3>
+      <p>“The word you will hear a lot is ‘emptiness’,” Rene Meulensteen, the former Manchester United coach, says. “You feel empty.”
+
+        After a six-week hiatus, the Premier League is back… but maybe not back with a bang for everyone.
+        
+        Although Erling Haaland and Mohamed Salah will be among those desperate to make up for lost time after watching the World Cup from their sofas, it is impossible to know what to expect from the 133 Premier League players (at least 50 more than any other league) who have been on duty in Qatar.</p>
+    </div>
+  </div>
+</div>
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+      <h4>article 3</h4>
+      <h6>Rangers narrowed the gap to Celtic to six points with a one-goal Scottish Premiership win over Ross County - a third in a row under Michael Beale.</h6>
+      <p>John Lundstram's low drive found the net 10 minutes from the break, but there were nervous moments before the midfielder eased some visiting tension.
+
+        George Harmon was denied from close range by goalkeeper Jon McLaughlin.
+        
+        But County rarely threatened thereafter as Rangers ground their way to another three points under their new manager.
+        
+        The visitors head back to Glasgow having, for the third match running, put the onus back on Celtic to restore their lead as their city rivals host St Johnstone on Saturday.</p>
+      <button class="btn btn-default btn-lg">In-detail</button>
+    </div>
+    <div class="col-sm-4">
+      <img src="./static/images/news3.PNG"></img>
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}

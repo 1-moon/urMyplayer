@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %}Player Registration site{% endblock %}
+
+{% block content %}
+{% include "_slideImg.html" %}
+
+        <h1><strong class="display-6">LATEST NEWS</strong> </h1>
+        <h3>breaking news!</h3>
+        <div class="row text-center">
+       
+            <form class="col-sm-4">
+              <a href="{{ url_for('main.news')}}">
+                <div class="thumbnail">
+                  <img src="./static/images/Argentina.jpg" alt="News-1">
+                  <p><strong>Worldcup 2022 review</strong></p>
+                  <p>Lionel Messi's last dance ends a controversial tournament in Qatar</p>
+                </div>
+              </a>                
+            </form>
+       
+
+
+    
+            <form class="col-sm-4">
+              <a href="{{ url_for('main.news')}}">
+                <div class="thumbnail">
+                  <img src="./static/images/chelsea2.PNG" alt="News-2">
+                  <p><strong>Chelsea's new stadium plan</strong></p>
+                  <p>Chelsea considering plan to move from Stamford Bridge into new stadium</p>
+                </div>
+              </a>                
+            </form>
+
+
+
+            <form class="col-sm-4">
+              <a href="{{ url_for('main.market')}}">
+                <div class="thumbnail">
+                  <img src="./static/images/transfer.PNG" alt="Transfer">
+                  <p><strong>Transfer Market open</strong></p>
+                  <p>Deadline : 28 January 2023</p>             
+                </div>
+              </a>
+            </form>
+            
+          </div>
+          
+          <div id="band" class="container text-center">
+            <h3>About Us</h3>
+            <p><em>TRANSFER MATCHING SYSTEM</em></p>
+            <p>An online system that makes international transfers of players between clubs quicker, smoother and more transparent.
+
+              Within the FIFA Legal & Compliance Division, the Regulatory Enforcement Department is in charge of running and administrating the Transfer Matching System (TMS).
+              
+              The Regulatory Enforcement Department has one objective in mind: to make the football transfer market better. The department contributes towards the growth and improvement of the football transfer market by simplifying and standardising transfer processes. Based on FIFA’s knowledge of transfers, regulations and technology, the department is committed to developing high-quality products and services designed to meet stakeholder and customer needs.</p>
+            <br>
+            <div class="row">
+              <div class="col-sm-4">
+                <p class="text-center"><strong>Chaewon</strong></p><br>
+                <a href="#demo" data-toggle="collapse">
+                  <img src="./static/images/chaewon.png" class="img-circle person" alt="Random Name" width="255" height="255">
+                </a>
+                <div id="demo" class="collapse">
+                  <p>Chairman</p>
+                  <p>Former Computer science student in leeds</p>
+                  <p>Member since 1988</p>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <p class="text-center"><strong>Eounchae</strong></p><br>
+                <a href="#demo2" data-toggle="collapse">
+                  <img src="./static/images/eounchae.png" class="img-circle person" alt="Random Name" width="255" height="255">
+                </a>
+                <div id="demo2" class="collapse">
+                  <p>Vice president</p>
+                  <p>Former president of FIFA</p>
+                  <p>Member since 1988</p>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <p class="text-center"><strong>Sakura</strong></p><br>
+                <a href="#demo3" data-toggle="collapse">
+                  <img src="./static/images/sakura.png" class="img-circle person" alt="Random Name" width="255" height="255">
+                </a>
+                <div id="demo3" class="collapse">
+                  <p>Associator</p>
+                  <p>Former football player</p>
+                  <p>Member since 2005</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+
+{% endblock content %}

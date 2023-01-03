@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block header %}
+<div class="jumbotron text-center">
+    <h1>Player Seacrch</h1> 
+    <p>Do you want to search for specific player?</p> 
+    <!-- search engine -->
+    <form class="col-md-4 col-lg-offset-4">
+        <div class="input-group">
+            <input type="text" id="search_kw" class="input is-large" value="{{ kw or '' }}">
+            <div class="input-group-btn">
+                <button class="btn btn-outline-secondary" type="button" id="btn_search">search</button>
+            </div>
+        </div>
+    </form>
+    <br>
+    <!-- page와 kw를 동시에 GET방식으로 요청할 수 있는 form element추가   -->
+    <form id="searchForm" method="get" action="/player_list">
+        <input type="hidden" id="kw" name="kw" value="{{ kw or '' }}">
+        <input type="hidden" id="page" name="page" value="{{ page }}">
+    </form>
+
+
+
+</div>
+
+{% endblock header %}
+
+
+{% block content %}
+
+{% block script %}
+
+{% endblock %}
+
+<h4 class="text-center">All Players</h4>
+<div class="row row-cols-1 row-cols-md-3">
+    <!-- card section  -->
+    <div class="col mb-4">
+        <div class="card-group">
+            {% for player in player_list.items %}
+            <div class="shadow p-3 mb-5 bg-white rounded" style="max-width: 20rem">
+                <div class="card-header">
+                    <img src="{{ player.profile_pic }}" style="width: 100%" >
+                </div>
+                <div class="card-body text-secondary">
+                    <p class="card-title"><strong>Name:         </strong> {{player.name}}</p>
+                    <p class="card-title"><strong>Nationality:  </strong> {{player.nationality}}</p>
+                    <p class="card-title"><strong>Club:         </strong> {{player.club}}</p>
+                    <p class="card-title"><strong>Birth:        </strong> {{player.birth}}</p>
+                    <p class="card-title"><strong>Height:       </strong> {{player.height}}</p>
+                    <p class="card-title"><strong>Positionr:    </strong> {{player.position.value}}</p>
+                    <p class="card-title"><strong>Foot:         </strong> {{player.foot}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<br>
+    
+        
+  
+
+{% endblock content %}

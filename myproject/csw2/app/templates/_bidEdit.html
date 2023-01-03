@@ -1,0 +1,30 @@
+
+
+<!-- Used to open the Modal -->
+<!-- Modal -->
+<div class="modal fade" id="updateBidModal" tabindex="-1" aria-labelledby="updateBidModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-club" id="updateBidModalLabel">bid edit</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- bid edit area  -->
+                <div class="form-floating">
+                    <input name="bid-club" type="text" class="form-control" id="update-club" >
+                    <label for="bid-club">club</label>
+                </div>
+                <div class="form-floating">
+                    <textarea name="bid-sum" class="form-control"  id="update-sum"></textarea>
+                    <label for="bid-sum">Bid amount</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
+                <button type="button" class="btn btn-primary" onclick="updateBid()">change</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

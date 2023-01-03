@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block header %}
+<!--Only show these button if user not logged in-->
+{% if not current_user.is_authenticated %}
+<div class="container2">
+    <div class="row text-center">
+        <div class="row justify-content-center mt-5 pb-4">
+        <div class="col-md-10">
+            <div class="jumbotron jumbotron-fluid">
+        
+            <div class="container">
+                
+
+                <div class="box">
+                    <p class="lead">Have you not signed up for team yet?</p>
+                    <a href="{{url_for('auth.signup')}}" class="btn btn-secondary btn-sm">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                        d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                    </svg>
+                    Signup Here</a>
+                </div>
+
+                <div class="box">
+                <p class="lead">Please login for Registration</p>
+                <a href="{{url_for('auth.login')}}" class="btn btn-secondary btn-sm"> <svg width="1em" height="1em"
+                    viewBox="0 0 16 16" class="bi bi-power" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M5.578 4.437a5 5 0 1 0 4.922.044l.5-.866a6 6 0 1 1-5.908-.053l.486.875z" />
+                    <path fill-rule="evenodd" d="M7.5 8V1h1v7h-1z" />
+                </svg>
+                Log-in Here!</a>
+                </div>
+                
+
+            </div>
+            </div>
+        </div>
+        </div> 
+    </div> 
+</div>
+{% endif %}
+{% endblock header %}
+
+
+{% block content %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Player Registraion</h1>
+    <p class="lead">Welcome club memebers!n</p>
+    <hr class="my-4">
+    <img src="./static/images/frontpage3-1.jpg"  alt="regi front page" style = "width: 100%" height="720"  >
+
+</div>
+<!-- <div class="jumbotron text-center">
+    <h1 class="display-6">Player Registraion</h1>  
+    <p class="lead">Welcome club memebers!</p>  
+    <img src="./static/images/frontpage3-1.jpg"  alt="regi front page" style = "width: 100%" height="720"  >
+    <br>
+
+</div> -->
+<br>
+
+<div class="row text-center">
+    <div class="column is-4 is-offset-4">
+        <h4 class="title">Player Registration application</h4>
+        <div class="form-group">
+            {% include "_errors.html" %}
+            <form action = "/player_regi"class="form-group" method = "post" enctype="multipart/form-data">
+                {{ form.csrf_token }}
+                {{ form.hidden_tag() }}
+    
+                <fieldset class="box">
+                    <div class="field">
+                        {{ form.profile_pic.label(class="form-control-label") }}
+                        {{ form.profile_pic(class="form-control form-control-lg") }}
+                    </div>
+
+                    <div class="field">
+                        {{ form.name.label(class="form-control-label") }}
+                        {{ form.name(class="form-control form-control-lg") }}
+                    </div>
+
+                    <div class="field">
+                        {{ form.nationality.label(class="form-control-label") }}
+                        {{ form.nationality(class="form-control form-control-lg") }}
+                    </div>
+
+                    <div class="field">
+                        {{ form.birth.label(class="form-control-label") }}
+                        {{ form.birth(class="form-control form-control-lg") }}
+                    </div>
+
+                    <div class="field">
+                        {{ form.height.label(class="form-control-label") }}
+                        {{ form.height(class="form-control form-control-lg") }}
+                    </div>
+
+                    <div class="field">
+                        {{ form.position.label(class="form-control-label") }}
+                        {{ form.position(class="form-control form-control-lg") }}
+                    </div>
+
+                    <div class="field">
+                        {{ form.foot.label(class="form-control-label") }}
+                        {{ form.foot(class="form-control form-control-lg") }}
+                    </div>
+
+                    <div class="field">
+                        {{ form.club.label(class="form-control-label") }}
+                        {{ form.club(class="form-control form-control-lg") }}
+                    </div>
+    
+                    {{ form.submit(class="btn btn-outline-info" ,value="Submit") }}
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+    
+
+
+{% endblock content %}
